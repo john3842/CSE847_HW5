@@ -1,4 +1,4 @@
-function [f] = customPlotKmeans2D(new_centroids,data,memberships)
+function [f] = customPlotKmeans2D(new_centroids,data,memberships,dimension)
 %PLOTKMEANS2D Summary of this function goes here
 %   Detailed explanation goes here
 % Plot in 2D
@@ -10,7 +10,7 @@ y = new_centroids(:,2);
 
 f = figure();
 plot(x,y,'+');
-axis([-1 11 -1 11]);
+axis([-1 dimension+1 -1 dimension+1]);
 legend('centroids');
 hold on;
 shapes = ['o','*','x','d','s'];

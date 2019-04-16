@@ -10,9 +10,8 @@ rec_err = [0,0,0,0];
 
 %[coeff, score] = pca(A);
 mean_A = A - mean(A);
-[u,s,v] = svd(cov(mean_A));
-[s,idx] = sort(s,'descend');
-coeff = u(:,idx);
+[u,s,v] = svd(mean_A);
+coeff = v;
 score = mean_A*coeff;
 
 im1 = reshape(A(1,:),16,16);

@@ -10,8 +10,6 @@ K = 3;
 centroids = sortrows(data(1:K,:));
 memberships = zeros(size(data,1), 1);
 
-
-data
 centroids
 
 [memberships, new_centroids] = customKmeans(data,centroids,memberships);
@@ -20,5 +18,5 @@ new_centroids
 
 if num_dimensions == 2
     f = customPlotKmeans2D(new_centroids,data,memberships,num_items);
-    saveas(f,['./figures/kmeans1.png']);
+    %saveas(f,['./figures/kmeansSpec.png']);
 end

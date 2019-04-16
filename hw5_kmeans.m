@@ -1,8 +1,9 @@
 clear;
 
 rng(4);
-num_items = 10;
-data = randi(num_items,num_items,2);
+num_items = 100;
+num_dimensions = 2;
+data = randi(10,num_items,num_dimensions);
 
 K = 3;
 
@@ -13,36 +14,11 @@ memberships = zeros(size(data,1), 1);
 data
 centroids
 
-while 1
-    total = 0;
-    for i=1:size(data,1)
-        k = 1;
-        min = 2*num_items^2;
-        for j=1:K
-             dist = (norm(data(i,:)-centroids(j,:)).^2);
-             
-             if (dist < min)
-                min = dist;
-                k = j;
-             end
-        end
-        memberships(i)=k;
-    end 
-    
-    new_centroids = centroids;
-    for i=1:K
-        xi = data(memberships==i,:);
-        cj = size(xi,1);
+[memberships, new_centroids] = customKmeans(data,centroids,memberships);
 
-        new_centroids(i,:) = [(1/cj)*sum(xi(:,1)) (1/cj)*sum(xi(:,2));];
-    end
-    
-    if (new_centroids == centroids)
-        break;
-    end
-    
-    centroids = new_centroids;
-end
-
-memberships
 new_centroids
+
+if num_dimensions == 2
+    f = customPlotKmeans2D(new_centroids,data,memberships);
+    saveas(f,['./figures/kmeanstemp.png']);
+end

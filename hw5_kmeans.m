@@ -5,8 +5,8 @@ num_items = 100;
 num_dimensions = 2;
 
 %cluster_1 = randi([0,10],num_items,num_dimensions);
-%cluster_2 = randi([20,100],num_items,num_dimensions);
-%cluster_3 = randi([110,300],num_items,num_dimensions);
+%cluster_2 = randi([50,100],num_items,num_dimensions);
+%cluster_3 = randi([150,300],num_items,num_dimensions);
 
 % https://www.mathworks.com/matlabcentral/answers/83702-generate-random-coordinates-around-a-circle
 x0=0; % x0 and y0 are center coordinates

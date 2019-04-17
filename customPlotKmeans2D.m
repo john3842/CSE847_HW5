@@ -10,7 +10,7 @@ y = new_centroids(:,2);
 
 f = figure();
 plot(x,y,'+');
-axis([-1 dimension -1 dimension]);
+axis([-dimension dimension -dimension dimension]);
 legend('centroids');
 hold on;
 shapes = ['*','o','x','d','s'];

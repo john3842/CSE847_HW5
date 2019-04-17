@@ -3,7 +3,11 @@ clear;
 rng(4);
 num_items = 100;
 num_dimensions = 2;
-data = randi(num_items,num_items,num_dimensions);
+cluster_1 = randi([0,10],num_items,num_dimensions);
+cluster_2 = randi([20,100],num_items,num_dimensions);
+cluster_3 = randi([100,200],num_items,num_dimensions);
+data = [cluster_1;cluster_2;cluster_3];
+num_items = num_items * 3;
 
 K = 3;
 
@@ -35,7 +39,7 @@ centroids = sortrows(d_Vecs(1:K,:));
 [memberships, new_centroids] = customKmeans(d_Vecs,centroids,memberships);
 
 if num_dimensions == 2
-    f = customPlotKmeans2D(new_centroids,d_Vecs,memberships,0);
+    f = customPlotKmeans2D(new_centroids,d_Vecs,memberships,0.5);
     saveas(f,['./figures/kmeansSpecData.png']);
     f = customPlotKmeans2D(new_centroids,data,memberships,num_items);
     saveas(f,['./figures/kmeansSpecEigVecs.png']);

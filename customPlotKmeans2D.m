@@ -13,7 +13,7 @@ plot(x,y,'+');
 axis([-1 dimension+1 -1 dimension+1]);
 legend('centroids');
 hold on;
-shapes = ['o','*','x','d','s'];
+shapes = ['*','o','x','d','s'];
 
 for i=1:K
     idx = (memberships == i);

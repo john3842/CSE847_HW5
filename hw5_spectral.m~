@@ -11,10 +11,27 @@ memberships = zeros(size(data,1), 1);
 
 % We need to turn our points into an adjacency matrix to get
 % Laplacian Matrix
+adjacencyMatrix = zeros(size(data,1));
+degreeVector = zeros(1,size(data,1));
 
-adjacencyMatrix = squareform(pdist(data,'euclidean'));
-binaryAdjMatrix = adjacencyMatrix > 0;
-degreeVector = sum(binaryAdjMatrix,1);
+for i = 1:size(data,1)
+   for j = i:size(data,1)
+        diff = data(i,:)-data(j,:);
+        dist = sqrt(sum(diff.*diff,2));
+        
+        score = dist;
+        
+        if score > 0
+            degreeVector(i) = degreeVector(i)+1;
+            degreeVector(j) = degreeVector(j)+1;
+        end
+        
+        adjacencyMatrix(i,j)=score;
+        adjacencyMatrix(j,i)=score;
+   end
+end
+
+adja = squareform(pdist(data,'euclidean'));
 
 degreeMatrix = diag(degreeVector);
 
